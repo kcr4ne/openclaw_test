@@ -25,8 +25,8 @@ Linux 및 Windows 시스템을 실시간으로 모니터링하고, 보안 위협
 
 **Linux / macOS:**
 ```bash
-git clone https://github.com/Start-Z-One/ai_sysadmin.git
-cd ai_sysadmin
+git clone https://github.com/kcr4ne/openclaw_test.git
+cd openclaw_test
 
 # 가상환경 생성 및 활성화
 python3 -m venv venv
@@ -39,8 +39,8 @@ pip install google-generativeai
 
 **Windows (PowerShell):**
 ```powershell
-git clone https://github.com/Start-Z-One/ai_sysadmin.git
-cd ai_sysadmin
+git clone https://github.com/kcr4ne/openclaw_test.git
+cd openclaw_test
 
 # 가상환경 생성 및 활성화
 python -m venv venv
