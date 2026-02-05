@@ -70,34 +70,21 @@ export GEMINI_API_KEY="AIzaSy..."
 $env:GEMINI_API_KEY="AIzaSy..."
 ```
 
-## ▶️ 실행 방법
+## ▶️ 실행 방법 (원클릭 백그라운드)
 
-두 개의 터미널이 필요합니다.
-
-### 터미널 1: 백엔드 (The Brain)
-*시스템 제어를 위해 관리자 권한이 필요합니다.*
+이제 터미널을 열어둘 필요가 없습니다. 아래 스크립트만 실행하세요.
 
 **Linux:**
 ```bash
-# -E 옵션: sudo 사용 시 환경변수(API Key) 유지
-cd ai_sysadmin
-sudo -E ./venv/bin/python main.py
+sudo ./run_background.sh
 ```
 
 **Windows:**
-*PowerShell을 '관리자 권한'으로 실행하세요.*
-```powershell
-cd ai_sysadmin
-.\venv\Scripts\python main.py
-```
+파일 탐색기에서 `run_background.bat` 를 더블 클릭하세요. (관리자 권한으로 자동 실행됩니다.)
 
-### 터미널 2: 프론트엔드 (The Face)
-```bash
-cd ai_sysadmin/interface
-npm run dev
-```
-
-브라우저 주소창에 **http://localhost:3000** 입력.
+---
+*실행 후 잠시 기다리면 웹 대시보드가 자동으로 열립니다.*
+*종료하려면 작업 관리자에서 python/node 프로세스를 종료하세요.*
 
 ## 🎮 사용 가이드
 
