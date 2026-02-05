@@ -1,0 +1,19 @@
+[Unit]
+Description=Project JARVIS - AI System Admin Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=cr4ne
+WorkingDirectory=/home/cr4ne/fuck/ai_sysadmin
+ExecStart=/home/cr4ne/fuck/ai_sysadmin/venv/bin/python main.py
+Restart=on-failure
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=jarvis-core
+# Eco-Mode Priority
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

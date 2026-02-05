@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  /* Authentic ZZZ Palette */
+  --zzz-yellow: #f3b400;
+  /* Signal Yellow */
+  --zzz-yellow-dim: #b8860b;
+  --zzz-orange: #ff6b00;
+  --zzz-dark: #1a1a1a;
+  --zzz-carbon: #111111;
+  --zzz-gray-text: #a0a0a0;
+
+  /* Accents */
+  --crt-glow-amber: rgba(255, 107, 0, 0.5);
+  --crt-glow-green: rgba(0, 255, 65, 0.4);
+}
+
+body {
+  background-color: #050505;
+  color: #fff;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+/* --- TEXTURES --- */
+
+/* 1. Carbon Mesh (Button Backgrounds) */
+.bg-carbon-mesh {
+  background-color: var(--zzz-carbon);
+  background-image:
+    radial-gradient(#333 15%, transparent 16%),
+    radial-gradient(#333 15%, transparent 16%);
+  background-size: 4px 4px;
+  background-position: 0 0, 2px 2px;
+}
+
+/* 2. Diagonal Stripes (Backgrounds) */
+.bg-stripes-dark {
+  background-image: repeating-linear-gradient(45deg,
+      #111,
+      #111 10px,
+      #151515 10px,
+      #151515 20px);
+}
+
+.bg-stripes-yellow {
+  background-image: repeating-linear-gradient(45deg,
+      var(--zzz-yellow),
+      var(--zzz-yellow) 10px,
+      #ffd700 10px,
+      #ffd700 20px);
+}
+
+/* --- COMPONENTS --- */
+
+/* CRT TV Screen Container */
+.tv-screen {
+  background: #000;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+  border: 4px solid #333;
+}
+
+/* Inner Scanline Overlay for TV */
+.scanlines::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 10;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Glossy Screen Reflection */
+.screen-gloss::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
+  pointer-events: none;
+  z-index: 11;
+}
+
+/* Retro VCR Button */
+.btn-vcr {
+  background: #e0e0e0;
+  color: #111;
+  border-bottom: 4px solid #999;
+  border-radius: 4px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: all 0.1s;
+}
+
+.btn-vcr:active {
+  transform: translateY(2px);
+  border-bottom-width: 0;
+}
+
+/* Yellow Header Bar (Random Play style) */
+.header-yellow-bar {
+  background: var(--zzz-yellow);
+  color: #000;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.05em;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes scanline {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.02;
+  }
+
+  5% {
+    opacity: 0.05;
+  }
+
+  10% {
+    opacity: 0.02;
+  }
+
+  15% {
+    opacity: 0.06;
+  }
+
+  20% {
+    opacity: 0.02;
+  }
+
+  50% {
+    opacity: 0.02;
+  }
+
+  55% {
+    opacity: 0.05;
+  }
+
+  60% {
+    opacity: 0.02;
+  }
+
+  100% {
+    opacity: 0.02;
+  }
+}
+
+.animate-flicker {
+  animation: flicker 2s infinite;
+}
+
+/* Glitch Text Effect */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 red;
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim-1 3s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -1px 0 blue;
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip: rect(20px, 9999px, 80px, 0);
+  }
+
+  20% {
+    clip: rect(60px, 9999px, 10px, 0);
+  }
+
+  40% {
+    clip: rect(90px, 9999px, 50px, 0);
+  }
+
+  60% {
+    clip: rect(10px, 9999px, 90px, 0);
+  }
+
+  80% {
+    clip: rect(50px, 9999px, 20px, 0);
+  }
+
+  100% {
+    clip: rect(30px, 9999px, 70px, 0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip: rect(80px, 9999px, 20px, 0);
+  }
+
+  20% {
+    clip: rect(10px, 9999px, 60px, 0);
+  }
+
+  40% {
+    clip: rect(90px, 9999px, 50px, 0);
+  }
+
+  60% {
+    clip: rect(30px, 9999px, 40px, 0);
+  }
+
+  80% {
+    clip: rect(70px, 9999px, 20px, 0);
+  }
+
+  100% {
+    clip: rect(40px, 9999px, 90px, 0);
+  }
+}

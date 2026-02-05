@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+psutil
+requests
+python-dotenv
+appdirs
+discord.py
